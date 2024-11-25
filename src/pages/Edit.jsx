@@ -5,12 +5,14 @@ import Button from "../components/Button";
 import { useContext, useEffect, useState } from "react";
 import { DiaryDispatchContext, DiaryStateContext } from "../App";
 import useDiary from "../hooks/useDiary";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Edit = () => {
   const params = useParams();
   const nav = useNavigate();
   const { onDelete, onUpdate } = useContext(DiaryDispatchContext);
   const curDiaryItem = useDiary(params.id);
+  usePageTitle(`${params.id}번 일기 수정`);
 
   // 삭제하기를 한번 더 물어보는 팝업창 띄우기
   const onClickDelete = () => {
